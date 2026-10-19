@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js')</script>
+<title>Harvard Bioscience, Inc. (Nasdaq: HBIO) | Investor Relations Concept</title>
+<meta name="description" content="An independent design concept for the Harvard Bioscience (Nasdaq: HBIO) investor relations page. Not affiliated with Harvard Bioscience, Inc.; the official IR site is https://investor.harvardbioscience.com/.">
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&amp;family=DM+Mono:wght@400;500&amp;family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+/* mc:tokens */
+:root{
+  /* palette.mjs --brand "#006fb4,#00aeaa,#143456" --strategy committed  (committed)
+     accent   #006fb4 oklch(0.526 0.136 246.5)
+     accent-2 #00aeaa oklch(0.678 0.116 191.9)
+     deep     #143456 oklch(0.32 0.072 252.2)
+     measured: white on --accent-ink 7.08:1, --accent-ink on --paper 6.89:1, --text-mid on --tint 5.65:1 */
+  --H: 246.5; --Hn: 252.2;
+  --accent:        oklch(0.526 0.136 246.5); /* bright: fills on light stock; text only on dark where --check proves >= 4.5; real */
+  --accent-lo:     oklch(0.526 0.136 246.5 / 0.14);
+  --accent-lt:     oklch(0.86 0.073 246.5); /* bright accent ON dark surfaces */
+  --accent-ink:    oklch(0.46 0.119 246.5); /* TEXT, links, primary-button background */
+  --accent-ink-d:  oklch(0.40 0.104 246.5); /* hover */
+  --accent-2:      oklch(0.678 0.116 191.9); /* real */
+  --accent-2-lt:   oklch(0.86 0.093 191.9);
+  --accent-2-ink:  oklch(0.46 0.078 191.9);
+  --ink:           oklch(0.26 0.027 252.2); /* headings */
+  --deep:          oklch(0.25 0.057 252.2); /* permanently dark band */
+  --deep-2:        oklch(0.18 0.046 252.2); /* gravest band / footer */
+  --paper:         oklch(0.99 0.004 252.2);
+  --card:          oklch(0.996 0.001 252.2);
+  --tint:          oklch(0.965 0.017 246.5); /* .sec-tint band, concept note, card interiors */
+  --tint-2:        oklch(0.91 0.035 246.5); /* borders, ghost outlines, the darker of two light bands */
+  --text:          oklch(0.31 0.027 252.2);
+  --text-mid:      oklch(0.49 0.027 252.2);
+  --line:          oklch(0.30 0.010 252.2 / 0.13);
+  --line-d:        oklch(0.98 0.010 246.5 / 0.14);
+  /* surface-slot defaults (foundation surface block); retune in surface.css */
+  --sheet-edge:    oklch(0.40 0.104 246.5 / 0.26);
+  --blind:         oklch(1.00 0.000 0 / 0.5);
+  --blind-k:       oklch(1.00 0.000 0 / 0.85);
+  --sheet-neg:     oklch(0.98 0.010 246.5 / 0.05);
+  --serif:         'Spectral', Georgia, serif;
+  --sans:          'Albert Sans', system-ui, sans-serif;
+  --mono:          'DM Mono', ui-monospace, monospace;
+  --wrap: 1140px; --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* mc:substrate 9576b9be1505 */
+/* mediaconsole substrate: inlined by scripts/scaffold.mjs, identical on every page. Never edit or retype it;
+   override in page/layer.css or page/surface.css (both load after it). Band: all. Hue-parametric: colours are
+   tokens or oklch(... var(--Hn)). Integrity: opaque nav, content visible without JS, print and forced-colors safe. */
+:where(:root){--wrap:1140px;--ease:cubic-bezier(0.22, 1, 0.36, 1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;scroll-padding-top:88px}
+body{font-family:var(--sans);color:var(--text);background:var(--paper);font-size:16px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none} img,svg{display:block;max-width:100%} button{font:inherit;cursor:pointer}
+::selection{background:var(--accent-lt);color:var(--deep)}
+:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px;border-radius:2px}
+.sec-dark :focus-visible,.snapshot :focus-visible,footer :focus-visible{outline-color:var(--accent-lt)}
+.wrap{width:min(var(--wrap),100% - 44px);margin-inline:auto}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip-link{position:absolute;left:12px;top:-60px;z-index:200;background:var(--deep);color:#fff;padding:10px 16px;border-radius:6px;font-size:.85rem;transition:top .2s var(--ease)}
+.skip-link:focus{top:12px}
+.concept-note{background:var(--tint);color:var(--accent-ink-d);font-size:.78rem;text-align:center;padding:8px 16px;position:relative;z-index:101}
+.concept-note a{color:inherit;font-weight:600;text-decoration:underline}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:-.01em;color:var(--ink)}
+h1{font-size:clamp(2.35rem,5.3vw,4rem)} h2{font-size:clamp(1.7rem,3.4vw,2.5rem)} h3{font-size:clamp(1.15rem,2vw,1.4rem)}
+p{max-width:68ch}
+.eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);display:inline-flex;align-items:center;gap:9px;margin-bottom:16px}
+.eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none}
+.lead{font-size:clamp(1.08rem,1.7vw,1.3rem);line-height:1.55;color:var(--text-mid)}
+/* four house buttons: primary + ghost on light stock, primary-light + ghost-light on dark stock.
+   Text on dark uses --accent-lt, never --accent (D16: --accent may be a mid-L real brand colour; it is a fill). */
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:11px 22px;border-radius:8px;font-family:var(--sans);font-size:.82rem;font-weight:600;letter-spacing:.02em;border:1.5px solid transparent;background:transparent;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease)}
+.btn:hover{transform:translateY(-1px)} .btn .arw{font-family:var(--mono);transition:transform .2s var(--ease)} .btn:hover .arw{transform:translateX(3px)}
+.btn-primary{background:var(--accent-ink);color:#fff} .btn-primary:hover{background:var(--accent-ink-d)}
+.btn-ghost{border-color:var(--tint-2);color:var(--accent-ink)} .btn-ghost:hover{background:var(--tint);border-color:var(--accent-ink)}
+.btn-primary-light{background:var(--accent-lt);color:var(--deep)} .btn-primary-light:hover{background:var(--tint)}
+.btn-ghost-light{border-color:oklch(0.98 0.01 var(--Hn)/.4);color:#fff} .btn-ghost-light:hover{background:oklch(0.98 0.01 var(--Hn)/.1)}
+/* nav: opaque by rule (no translucency, no blur); markup is emitted by scaffold.mjs from page.json */
+.site-nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--line);transition:box-shadow .3s var(--ease)}
+.site-nav.scrolled{box-shadow:0 6px 24px oklch(0.3 0.02 var(--Hn)/.07)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
+.nav-brand{display:flex;align-items:center;gap:12px;min-height:44px;min-width:0}
+.nav-logo{display:flex;align-items:center;flex:none}
+.nav-logo img{height:26px;width:auto}
+.nav-name{font-family:var(--serif);font-size:1.2rem;line-height:1.1;color:var(--ink)}
+.nav-tick{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;color:var(--text-mid);border:1px solid var(--line);border-radius:5px;padding:4px 8px}
+.nav-links{display:flex;align-items:center;gap:24px;list-style:none}
+.nav-links a:not(.btn){font-size:.86rem;font-weight:500;color:var(--text-mid);transition:color .2s var(--ease)}
+.nav-links a:not(.btn):hover{color:var(--accent-ink)}
+.nav-links a.active{color:var(--ink);text-decoration:underline;text-underline-offset:7px;text-decoration-color:var(--accent);text-decoration-thickness:2px}
+.nav-burger{display:none;flex-direction:column;gap:5px;width:44px;height:44px;align-items:center;justify-content:center;background:none;border:none}
+.nav-burger span{width:22px;height:2px;background:var(--ink);border-radius:2px;transition:transform .25s var(--ease),opacity .2s}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* bands: FLAT FILLS, the floor only; page/surface.css must override them (verify FAILs flat pages) */
+main{display:block;overflow-x:clip}   /* a translated reveal or wide motif can never widen the page */
+main>section{padding:clamp(56px,8vw,104px) 0}
+.sec-white{background:var(--paper)} .sec-tint{background:var(--tint)}
+.sec-dark{background:var(--deep);color:oklch(0.9 0.008 var(--Hn))}
+.sec-dark h1,.sec-dark h2,.sec-dark h3{color:#fff} .sec-dark .eyebrow{color:var(--accent-lt)} .sec-dark .eyebrow::before{background:var(--accent)}
+.sec-dark .lead{color:oklch(0.86 0.01 var(--Hn))}
+.sec-head{max-width:660px;margin-bottom:clamp(36px,5vw,56px)} .sec-head p{margin-top:14px}
+/* data sits on its own plate: table.fin cells are transparent, never paint a band behind figures */
+.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table.fin{width:100%;border-collapse:collapse;min-width:540px;font-size:.92rem}
+table.fin caption{text-align:left;font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--text-mid);padding:14px 20px;border-bottom:1px solid var(--line);background:var(--card)}
+table.fin th,table.fin td{text-align:left;padding:14px 20px;border-bottom:1px solid var(--line)}
+table.fin tbody tr:last-child td{border-bottom:none}
+table.fin td.num{font-family:var(--mono);text-align:right;color:var(--ink);font-weight:500}
+table.fin thead th{font-weight:700;color:var(--ink);background:var(--card)}
+footer{background:var(--deep);color:oklch(0.76 0.008 var(--Hn));padding:56px 0 28px}
+.fls{padding:32px 0 0;font-size:.78rem;line-height:1.7;color:oklch(0.68 0.008 var(--Hn));max-width:98ch} .fls b{color:oklch(0.85 0.01 var(--Hn))}
+.fls a{color:inherit;text-decoration:underline} .fls+.fls{padding-top:14px}
+.market-note{padding-top:18px;margin-top:18px;border-top:1px solid var(--line-d);font-size:.72rem;line-height:1.7;color:oklch(0.68 0.008 var(--Hn))}
+/* reveal: hidden only once motion.js has set html.js, so no-JS and JS failure show everything.
+   Direction variants set --reveal-from (components/motion-extra.css); stagger with style="--d:.08s". */
+.reveal{transition:opacity .65s var(--ease),transform .65s var(--ease);transition-delay:var(--d,0s)}
+.js .reveal:not(.in){opacity:0;transform:var(--reveal-from,translateY(20px))}
+/* motif pause: motion.js toggles .paused on #hero-motif off-screen, in a hidden tab, or via [data-motif-toggle] */
+.paused,.paused::before,.paused::after,.paused *,.paused *::before,.paused *::after{animation-play-state:paused!important}
+@media (max-width:900px){
+  .nav-burger{display:flex}
+  .nav-links{position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:2px;background:var(--paper);border-bottom:1px solid var(--line);padding:12px 22px 20px;opacity:0;transform:translateY(-10px);visibility:hidden;pointer-events:none;transition:opacity .28s var(--ease),transform .28s var(--ease),visibility .28s;box-shadow:0 16px 30px oklch(0.3 0.02 var(--Hn)/.08)}
+  .nav-links.open{opacity:1;transform:none;visibility:visible;pointer-events:auto}
+  .nav-links li{width:100%} .nav-links a:not(.btn){display:block;padding:12px 0} .nav-links .btn{margin-top:10px;display:inline-flex}
+}
+@media (max-width:768px){ .footer-links a,.contact-col a{min-height:44px;display:flex;align-items:center} }   /* 44px tap targets; (0,1,1) so layer.css can restyle */
+@media (prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important}
+  .reveal{transition:none} .js .reveal:not(.in){opacity:1;transform:none}
+  .btn:hover{transform:none} [class*="motif"]{animation:none!important} [data-motif-toggle]{display:none}
+}
+/* print (D12): decoration off, every reveal shown, dark bands re-inked dark-on-white (backgrounds may not print).
+   A custom dark band must carry .sec-dark so this, its focus ring and its heading colour all apply. */
+@media print{
+  *,*::before,*::after{background-image:none!important;box-shadow:none!important;text-shadow:none!important;animation:none!important;transition:none!important}
+  .site-nav{position:static} .nav-burger,.skip-link,[data-motif-toggle]{display:none!important}
+  .js .reveal:not(.in){opacity:1!important;transform:none!important}
+  .sec-dark,.sec-dark *,.hero,.hero *,.snapshot,.snapshot *,footer,footer *{background-color:transparent!important;color:#111!important;border-color:#bbb!important}
+  .sec-white,.sec-tint,.sec-dark,footer{background-color:#fff!important;border-top:1px solid #bbb}
+  .btn{background:transparent!important;color:#111!important;border-color:#111!important}
+  .table-scroll{overflow:visible;background:#fff!important}
+  main>section{padding:28px 0}
+}
+/* forced colors: the UA repaints every band to Canvas, so bands get a system seam instead */
+@media (forced-colors:active){
+  .sec-white,.sec-tint,.sec-dark,footer{background-image:none;border-top:1px solid CanvasText}
+  .btn{border-color:ButtonText}
+  .nav-burger span{forced-color-adjust:none;background:CanvasText}
+  .table-scroll{border-color:CanvasText}
+}
+/* mc:component stats */
+/* stats: E1 stats band, the snapshot/stats coverage slot, 3 to 5 stats. Band: dark (section.snapshot.sec-dark).
+   Integrity: every .stat carries a .stat-src provenance line or it is not printed; hairlines are the 1px grid gap. */
+.stats-band{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:1px;background:var(--line-d);border:1px solid var(--line-d);border-radius:12px;overflow:hidden}
+.stat{background:var(--deep);padding:24px 20px;display:flex;flex-direction:column;gap:6px}
+.stat-num{font-family:var(--mono);font-size:clamp(1.5rem,3.2vw,2.1rem);font-weight:600;line-height:1;letter-spacing:-.02em;color:#fff;font-variant-numeric:tabular-nums}
+.stat-num em{font-style:normal;color:var(--accent-lt)}
+.stat-label{font-size:.8rem;color:oklch(0.78 0.008 var(--Hn))}
+.stat-src{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:oklch(0.72 0.008 var(--Hn))}
+/* mc:component timeline */
+/* timeline: E7 press and filings timeline grouped by year, newest first. Band: light (.sec-white / .sec-tint).
+   Integrity: every href is a URL you observed (no constructed detail pages; fall back to the news index or EDGAR);
+   headlines exactly as filed. Sticky year top:96px clears the 72px nav. */
+.news-year{display:grid;grid-template-columns:96px 1fr;gap:0 24px;align-items:start;border-top:1px solid var(--line);padding:22px 0 0;margin-top:22px}
+.news-year:first-child{border-top:none;padding:0;margin-top:0}
+.news-yr{position:sticky;top:96px;font-family:var(--mono);font-size:.9rem;font-weight:600;color:var(--text-mid)}
+.news-list{list-style:none;display:grid}
+.news-item{display:grid;grid-template-columns:118px 1fr auto;gap:4px 18px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.news-item:last-child{border-bottom:none}
+.news-item time{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-mid)}
+.news-link{display:flex;align-items:center;gap:8px;min-height:44px;font-size:1rem;color:var(--ink);transition:color .2s var(--ease)}
+.news-link:hover{color:var(--accent-ink)}
+.news-link .arw{font-family:var(--mono);transition:transform .2s var(--ease)}
+.news-link:hover .arw{transform:translateX(3px)}
+.news-tag{justify-self:start;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent-lo);padding:4px 8px;border-radius:4px}
+@media (max-width:640px){
+  .news-year{grid-template-columns:1fr;gap:12px}
+  .news-yr{position:static}
+  .news-item{grid-template-columns:1fr;gap:2px;padding:10px 0}
+}
+/* mc:layer */
+/* ============================================================================
+   Harvard Bioscience: the visible layer. Archetype full-bleed-split; type Spectral / Albert Sans / DM Mono.
+   One idea: the logo's own crescent, enlarged, wraps the photograph. Everything else is plain, filed, and tagged.
+   ============================================================================ */
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.015em}
+h2{font-size:clamp(1.8rem,3.4vw,2.7rem);line-height:1.12;max-width:22ch}
+h3{line-height:1.2}
+.sec-head{display:grid;gap:12px;margin-bottom:clamp(28px,4vw,48px);max-width:68ch}
+.sec-head .lead{margin-top:2px}
+
+/* ---- provenance tags and source links (solid fills; translucent tags go to mud on dark) ---- */
+.tg{display:inline-block;font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;line-height:1.4;padding:3px 8px;border-radius:4px;vertical-align:.14em;margin-left:3px;white-space:nowrap}
+.tg-f{background:var(--accent-ink);color:#fff}
+.tg-cs{background:transparent;color:var(--accent-ink);box-shadow:inset 0 0 0 1px currentColor}
+.tg-cm{background:var(--accent-2-ink);color:#fff}
+.tg-site{background:var(--tint-2);color:var(--ink)}
+.src{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink);text-decoration:underline;text-decoration-color:var(--tint-2);text-underline-offset:3px;margin-left:6px;transition:text-decoration-color .2s var(--ease)}
+.src:hover{text-decoration-color:currentColor}
+.inl{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
+.sec-dark .tg-f{background:var(--accent-lt);color:var(--deep)}
+.sec-dark .tg-cs{color:var(--accent-lt)}
+.sec-dark .tg-cm{background:var(--accent-2-lt);color:var(--deep)}
+.sec-dark .tg-site{background:oklch(0.36 0.07 246.5);color:#fff}
+.sec-dark .src,.sec-dark .inl{color:var(--accent-lt);text-decoration-color:var(--line-d)}
+.sec-dark .src:hover{text-decoration-color:currentColor}
+.arw{margin-left:6px}
+
+/* ---- 00 hero: copy on the blue field, the photograph inside the enlarged crescent ---- */
+.hero{position:relative;overflow:hidden;padding:clamp(52px,8vw,104px) 0 clamp(56px,8vw,96px)}
+.hero-wrap{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:clamp(24px,4vw,64px);align-items:center}
+.hero .eyebrow{color:var(--accent-2-lt)}
+.hero h1{font-size:clamp(2.35rem,5vw,4.15rem);line-height:1.04;letter-spacing:-.022em;color:#fff;max-width:15ch;margin:14px 0 20px}
+.hero h1 span{font-style:italic;color:var(--accent-2-lt)}
+.hero .lead{color:oklch(0.94 0.018 246.5);max-width:58ch;font-size:1.04rem;line-height:1.65}
+.hero .notice{margin:26px 0 24px;padding:18px 20px 16px;background:var(--deep);border:1px solid oklch(1 0 0 / .22);border-top:3px solid var(--accent-2);border-radius:10px;max-width:60ch}
+.hero .notice h2{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2-lt);line-height:1.5;max-width:none;margin-bottom:10px}
+.hero .notice ol{list-style:none;counter-reset:n;display:grid;gap:10px}
+.hero .notice li{counter-increment:n;position:relative;padding-left:2rem;font-size:.9rem;line-height:1.55;color:oklch(0.92 0.015 246.5)}
+.hero .notice li::before{content:counter(n);position:absolute;left:0;top:.05em;font-family:var(--mono);font-size:.78rem;color:var(--accent-2-lt);border:1px solid oklch(1 0 0 / .3);border-radius:50%;width:1.35rem;height:1.35rem;display:grid;place-items:center}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px}
+.hero-art{position:relative;width:min(100%,560px);aspect-ratio:1/1;justify-self:center}
+.hero-photo{position:absolute;left:50%;top:50%;width:61%;aspect-ratio:1/1;transform:translate(-50%,-50%);border-radius:50%;overflow:hidden;box-shadow:0 0 0 7px oklch(1 0 0 / .14);background:var(--deep)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block}
+.hero-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.motif-crescent{fill:var(--accent-2-lt)}
+.motif-ring{stroke:oklch(1 0 0 / .4)}
+.motif-dot{fill:#fff}
+.motif-orbit{transform-box:view-box;transform-origin:50% 50%;animation:hm-orbit 40s linear infinite}
+@keyframes hm-orbit{to{transform:rotate(360deg)}}
+.hero-pause{min-height:44px}
+
+/* ---- 01 snapshot: five sourced figures on white cells over the tint band ---- */
+.snapshot{padding:clamp(36px,5vw,56px) 0}
+.snapshot .stats-band{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;background:none;border:0;border-radius:0;overflow:visible}
+.snapshot .stat{background:var(--card);padding:22px 18px;border:1px solid var(--line);border-radius:10px}
+.snapshot .stat-num{font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,2.9vw,2.4rem);letter-spacing:-.02em;color:var(--ink);font-variant-numeric:lining-nums}
+.snapshot .stat-num em{font-style:normal;color:var(--accent-ink)}
+.snapshot .stat-label{font-size:.84rem;line-height:1.4;color:var(--text)}
+.snapshot .stat-src{color:var(--text-mid)}
+
+/* ---- 02 story: plate | text ---- */
+.split-wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:center}
+.split-fig{margin:0}
+.split-fig img{width:100%;height:auto;display:block;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.split-fig figcaption{margin-top:12px;font-size:.8rem;line-height:1.5;color:var(--text-mid)}
+.split-copy p{margin-top:16px;max-width:60ch}
+.split-copy h2{margin-top:10px}
+.pull{margin:28px 0 0;padding:22px 24px;background:var(--tint);border-top:2px solid var(--accent);border-radius:0 0 8px 8px}
+.pull p{margin:0;font-family:var(--serif);font-size:1.22rem;line-height:1.48;color:var(--ink);max-width:none}
+.pull .pull-src{margin-top:12px;font-family:var(--sans);font-size:.8rem;line-height:1.5;color:var(--text-mid)}
+
+/* ---- 03 plan: four pillars on the navy band, one hairline grid ---- */
+.pillars{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line-d);border:1px solid var(--line-d);border-radius:12px;overflow:hidden}
+.pillar{background:var(--deep);padding:clamp(22px,3vw,38px)}
+.pillar .pn{display:block;font-family:var(--serif);font-weight:300;font-size:3.4rem;line-height:1;color:var(--accent-2-lt);margin-bottom:14px}
+.pillar h3{color:#fff;font-size:1.38rem}
+.pillar p{margin-top:10px;font-size:.96rem;line-height:1.65;color:oklch(0.88 0.015 246.5)}
+.plan-note{margin-top:16px;font-size:.8rem;color:oklch(0.78 0.02 246.5)}
+
+/* ---- 04 instruments: four product plates and the brand row ---- */
+.prod-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.prod{margin:0;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;transition:transform .35s var(--ease),border-color .35s var(--ease)}
+.prod:hover{transform:translateY(-3px);border-color:var(--accent)}
+.prod-img{aspect-ratio:4/3;background:var(--card);border-bottom:1px solid var(--line)}
+.prod-img img{width:100%;height:100%;object-fit:contain;padding:10px;display:block}
+.prod figcaption{padding:16px 16px 18px;display:grid;gap:6px}
+.prod figcaption b{font-family:var(--serif);font-weight:500;font-size:1.12rem;color:var(--ink);line-height:1.25}
+.prod figcaption span{font-size:.84rem;line-height:1.5;color:var(--text)}
+.brands{margin-top:26px;font-size:.88rem;line-height:1.8;color:var(--text)}
+.brands-k{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-mid);margin-bottom:4px}
+
+/* ---- 05 financials: the bridge, then the tables ---- */
+.fin-grid{display:grid;grid-template-columns:minmax(0,.98fr) minmax(0,1.02fr);gap:clamp(24px,4vw,56px);align-items:start}
+.fin-h{font-family:var(--mono);font-size:.74rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-mid);margin-bottom:6px}
+.bridge{list-style:none}
+.bridge li{display:grid;grid-template-columns:minmax(0,10.5rem) minmax(0,1fr) 4.6rem 5.6rem;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.bridge .b-l{font-size:.88rem;line-height:1.35;color:var(--text)}
+.bridge .tot .b-l{font-weight:600;color:var(--ink)}
+.bridge .b-bar{display:block;height:12px;background:var(--tint);border-radius:2px;position:relative;overflow:hidden}
+.bridge .b-bar i{position:absolute;inset:0 auto 0 0;width:var(--w);background:var(--accent-2)}
+.bridge .neg .b-bar i{background:var(--accent-ink)}
+.bridge .key .b-bar i{background-image:repeating-linear-gradient(45deg,var(--accent-ink) 0 5px,var(--accent) 5px 10px);background-size:100% 100%;background-repeat:no-repeat}
+.bridge .b-v{font-family:var(--mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap}
+.bridge .tg{justify-self:start;margin:0}
+.tnote{margin:12px 0 30px;font-size:.82rem;line-height:1.62;color:var(--text-mid);max-width:70ch}
+.fin .table-scroll{margin-top:0}
+
+/* ---- 06 financing and listing: the gravest band ---- */
+.fing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,60px);align-items:start}
+.fing-col h3{font-family:var(--mono);font-size:.74rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-lt);margin:30px 0 10px}
+.fing-col h3:first-child{margin-top:0}
+.fing-col p{max-width:62ch;font-size:.96rem;line-height:1.7;color:oklch(0.9 0.012 252.2)}
+.fing-col .tnote{color:oklch(0.8 0.015 252.2)}
+.financing .table-scroll{margin:12px 0 0}
+.trail{list-style:none;position:relative;display:grid;gap:20px;padding-left:24px}
+.trail::before{content:'';position:absolute;left:5px;top:8px;bottom:8px;width:1px;background:var(--line-d)}
+.trail li{position:relative;display:grid;gap:5px}
+.trail li::before{content:'';position:absolute;left:-24px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--deep-2);border:1.5px solid var(--accent-lt)}
+.trail li.open::before{background:var(--accent-lt)}
+.trail time{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-lt)}
+.trail div{font-size:.94rem;line-height:1.6;color:oklch(0.9 0.012 252.2)}
+
+/* ---- 07 filings and alerts ---- */
+.news{max-width:900px}
+.alerts-row{display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;justify-content:space-between;margin-top:44px;padding:22px 26px;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.alerts-row b{font-family:var(--serif);font-weight:500;font-size:1.2rem;color:var(--ink)}
+.alerts-row p{margin-top:4px;font-size:.88rem;line-height:1.55;color:var(--text);max-width:52ch}
+
+/* ---- 08 contact ---- */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px}
+.contact-col h3{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-mid)}
+.contact-col a,.contact-col address{display:block;margin-top:10px;font-style:normal;font-size:1rem;line-height:1.55;color:var(--ink)}
+.contact-col a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--tint-2);min-height:44px;display:flex;align-items:center}
+.contact-col a:hover{text-decoration-color:currentColor}
+
+/* ---- fixes found in the render pass: dark-band tables sit on a light plate, so their text must be dark ---- */
+.sec-dark .eyebrow::before{background:var(--accent-2-lt)}
+.sec-dark table.fin th,.sec-dark table.fin td{color:var(--text)}
+.sec-dark table.fin th[scope="row"],.sec-dark table.fin thead th{color:var(--ink)}
+.fin-grid{grid-template-columns:minmax(0,.84fr) minmax(0,1.16fr)}
+.fin table.fin th,.fin table.fin td{padding:12px 12px;font-size:.88rem}
+.bridge li{grid-template-columns:minmax(0,9.5rem) minmax(0,1fr) 4.6rem 5.6rem}
+
+/* ---- footer content (the substrate styles the shell, not these) ---- */
+.foot-brand{margin-bottom:20px}
+.foot-brand img{display:block;height:44px;width:auto}
+.footer-links{list-style:none;display:flex;flex-wrap:wrap;gap:2px 26px;margin:0 0 22px;padding:0}
+.footer-links a{display:inline-flex;align-items:center;min-height:44px;color:var(--accent-lt);text-decoration:underline;text-decoration-color:var(--line-d);text-underline-offset:3px}
+.footer-links a:hover{color:#fff;text-decoration-color:currentColor}
+.method{font-size:.84rem;line-height:1.7;color:oklch(0.82 0.012 252.2);max-width:72ch;margin:0 0 28px}
+
+/* ---- responsive: every grid track is minmax(0,1fr) ---- */
+@media (max-width:1000px){
+  .snapshot .stats-band{grid-template-columns:repeat(auto-fit,minmax(168px,1fr))}
+  .prod-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:900px){
+  .hero-wrap,.split-wrap,.fin-grid,.fing-grid{grid-template-columns:minmax(0,1fr)}
+  .hero-art{width:min(100%,440px)}
+  .hero h1{max-width:none}
+  .pillars{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+  .bridge li{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"l v" "bar bar" "tg tg";row-gap:8px}
+  .bridge .b-l{grid-area:l}
+  .bridge .b-bar{grid-area:bar}
+  .bridge .b-v{grid-area:v;text-align:right}
+  .bridge .tg{grid-area:tg}
+  .prod-grid{grid-template-columns:minmax(0,1fr)}
+  .prod-img{aspect-ratio:16/10}
+  .hero .notice{padding:16px 16px 14px}
+  .fin table.fin th,.fin table.fin td{padding:10px 8px;font-size:.8rem}
+  .financing table.fin th,.financing table.fin td{padding:10px 8px;font-size:.82rem}
+  table.fin.wrapt{min-width:0;width:100%}
+  table.fin.wrapt td,table.fin.wrapt th{white-space:normal}
+  table.fin.wrapt caption{white-space:normal}
+}
+@media print{.hero-art,.hero-pause{display:none}}
+
+/* ============================================================================
+   Design pass (impeccable bolder). Five moves, appended last so they win over the base rules above;
+   every mobile override is restated here. 1 scale on heads and figures, 2 the stat cards straddle the hero seam,
+   3 pillar numerals at 4x the label, 4 an asymmetric instruments grid (one large, three small), 5 the impairment row
+   is the focal row of the bridge. Hero and the crescent are untouched.
+   ============================================================================ */
+h2{font-weight:300;font-size:clamp(2.1rem,4.4vw,3.5rem);line-height:1.06;letter-spacing:-.025em;max-width:20ch}
+.sec-head{gap:14px}
+.hero h1,.hero h1 span{font-weight:300}
+
+/* 2. the five figures sit across the seam between hero and tint, at display scale */
+.hero{padding-bottom:clamp(104px,12vw,160px)}
+.snapshot{display:flow-root;padding-top:0;padding-bottom:clamp(40px,5vw,64px)}
+.snapshot .stats-band{margin-top:calc(-1 * clamp(52px,6vw,84px));position:relative;z-index:3}
+.snapshot .stat{padding:26px 20px 22px}
+.snapshot .stat-num{font-weight:300;font-size:clamp(2rem,3.8vw,3.2rem);letter-spacing:-.035em;line-height:1}
+
+/* story: the quotation takes display scale */
+.pull{margin-top:34px;padding:28px 30px 24px}
+.pull p{font-size:clamp(1.35rem,2.2vw,1.85rem);font-weight:300;line-height:1.35;letter-spacing:-.01em}
+
+/* 3. pillars: the numeral is 4x the label */
+.pillar .pn{font-size:clamp(4.2rem,7.5vw,6.4rem);font-weight:300;letter-spacing:-.04em;line-height:.9;margin-bottom:18px}
+.pillar h3{font-size:1.5rem}
+
+/* 4. instruments: one large plate, three small ones beside it */
+.prod-grid{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-rows:repeat(3,auto);gap:16px}
+.prod:first-child{grid-row:1/4}
+.prod:first-child .prod-img{flex:1;display:flex;aspect-ratio:auto;min-height:340px}
+.prod:first-child figcaption{padding:20px 22px 24px}
+.prod:first-child figcaption b{font-size:1.9rem;font-weight:300;letter-spacing:-.015em}
+.prod:not(:first-child){flex-direction:row;align-items:stretch}
+.prod:not(:first-child) .prod-img{flex:0 0 38%;aspect-ratio:auto;border-bottom:0;border-right:1px solid var(--line)}
+.prod:not(:first-child) figcaption{align-content:center}
+
+/* 5. the bridge: the impairment is the focal row, tinted, with a taller bar and a display figure */
+.bridge .key{grid-template-columns:minmax(0,9.5rem) minmax(0,1fr) auto 5.6rem;background:var(--tint);margin:4px -14px;padding:16px 14px;border-radius:8px;border-bottom-color:transparent}
+.bridge .key .b-l{font-weight:600;color:var(--ink)}
+.bridge .key .b-bar{height:20px;background:var(--card)}
+.bridge .key .b-v{font-family:var(--serif);font-size:1.5rem;font-weight:400;letter-spacing:-.02em}
+
+@media (max-width:900px){
+  .prod-grid{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
+  .prod:first-child{grid-row:auto}
+  .prod:first-child .prod-img{flex:none;min-height:0;aspect-ratio:16/10}
+  .hero{padding-bottom:clamp(96px,16vw,128px)}
+}
+@media (max-width:640px){
+  .prod:not(:first-child){flex-direction:column}
+  .prod:not(:first-child) .prod-img{flex:none;aspect-ratio:16/10;border-right:0;border-bottom:1px solid var(--line)}
+  .bridge .key{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"l v" "bar bar" "tg tg";margin:4px -10px;padding:14px 10px}
+  .snapshot .stats-band{margin-top:-48px}
+}
+
+/* source links inside tables never break at their hyphen ("10-" over "K") */
+.src{white-space:nowrap}
+table.fin .src{margin-left:0}
+/* mc:surface */
+/* ============================================================================
+   Harvard Bioscience surface system: six stocks drawn from one idea, the crescent (an arc of a large circle).
+   Hero: the blue-to-teal field with the arc drawn through it. White: printed ink arc, top right. Tint: BLIND WHITE ledger
+   and arc. Navy: the same arcs in negative. Grave: a plain hairline ledger, no glow. Split band: a two-tone half.
+   Polarity: printed dark ruling on white stock, BLIND WHITE ruling on tint, negative (white, very low alpha) on dark.
+   NOTE: background-image takes images only. Size, position and repeat live in their own properties, one list entry per
+   layer in the same order (a shorthand inside background-image drops the whole declaration and renders the band flat).
+   Trim hairlines sit 11px inside each band edge, where no glyph lands (.wrap is 100% - 44px).
+   ============================================================================ */
+:root{
+  --sheet-edge:  oklch(0.40 0.104 246.5 / 0.26);
+  --blind:       oklch(1 0 0 / 0.55);
+  --blind-k:     oklch(1 0 0 / 0.85);
+  --sheet-neg:   oklch(0.98 0.010 246.5 / 0.06);
+  --trim-ink:    linear-gradient(oklch(0.22 0.05 252.2 / .22),oklch(0.22 0.05 252.2 / .22));
+  --trim-blind:  linear-gradient(oklch(1 0 0 / .9),oklch(1 0 0 / .9));
+  --trim-neg:    linear-gradient(oklch(0.98 0.012 246.5 / .16),oklch(0.98 0.012 246.5 / .16));
+}
+main>section{position:relative}
+.sec-dark,.sec-grave{color:oklch(0.93 0.01 252.2)}
+
+/* A. HERO FIELD: glow behind the art, the arc ruled through it, the blue-to-teal field, trims last.
+   Text sits left of ~55%, where the field is L .36 to .46 (white >= 7:1); the teal end lands behind the art only. */
+#hero.sec-drench{background-color:var(--accent-ink);
+  background-image:
+    radial-gradient(44% 72% at 78% 50%,oklch(0.74 0.11 198 / .5) 0,transparent 70%),
+    radial-gradient(circle at 78% 50%,transparent 0 332px,oklch(1 0 0 / .15) 332px 333.5px,transparent 333.5px),
+    linear-gradient(105deg,oklch(0.35 0.1 250) 0,oklch(0.44 0.12 246.5) 50%,oklch(0.53 0.12 232) 76%,oklch(0.65 0.115 202) 100%),
+    var(--trim-neg),var(--trim-neg);
+  background-size:100% 100%,100% 100%,100% 100%,1px 100%,1px 100%;
+  background-position:0 0,0 0,0 0,11px 0,calc(100% - 11px) 0;
+  background-repeat:no-repeat,no-repeat,no-repeat,no-repeat,no-repeat}
+
+/* B. PAPER (white): head wash falling from the tint, one printed ink arc in the top-right corner, ink trims last */
+.sec-white{background-color:var(--paper);
+  background-image:
+    linear-gradient(to bottom,var(--tint) 0,var(--paper) 220px),
+    radial-gradient(circle at 100% 0,transparent 0 268px,oklch(0.40 0.104 246.5 / .13) 268px 269px,transparent 269px),
+    var(--trim-ink),var(--trim-ink);
+  background-size:100% 100%,100% 100%,1px 100%,1px 100%;
+  background-position:0 0,0 0,11px 0,calc(100% - 11px) 0;
+  background-repeat:no-repeat,no-repeat,no-repeat,no-repeat}
+
+/* C. TINT: BLIND WHITE ledger (19px minor, 95px major) and a white arc bottom-left, white trims */
+.sec-tint{background-color:var(--tint);
+  background-image:
+    radial-gradient(circle at 0 100%,transparent 0 292px,var(--blind-k) 292px 294px,transparent 294px),
+    repeating-linear-gradient(to bottom,var(--blind) 0 1px,transparent 1px 19px),
+    repeating-linear-gradient(to bottom,var(--blind-k) 0 1px,transparent 1px 95px),
+    var(--trim-blind),var(--trim-blind);
+  background-size:100% 100%,8px 100%,14px 100%,1px 100%,1px 100%;
+  background-position:0 0,0 0,100% 0,11px 0,calc(100% - 11px) 0;
+  background-repeat:no-repeat,repeat-y,repeat-y,no-repeat,no-repeat}
+
+/* D. NAVY (plan): a cold lift from the top-right, negative arcs ruled from that corner, negative trims */
+.sec-dark:not(.sec-grave):not(#hero){background-color:var(--deep);
+  background-image:
+    radial-gradient(58% 100% at 100% 0,oklch(0.36 0.095 248 / .6) 0,transparent 70%),
+    repeating-radial-gradient(circle at 100% 0,var(--sheet-neg) 0 1px,transparent 1px 58px),
+    var(--trim-neg),var(--trim-neg);
+  background-size:100% 100%,100% 100%,1px 100%,1px 100%;
+  background-position:0 0,0 0,11px 0,calc(100% - 11px) 0;
+  background-repeat:no-repeat,no-repeat,no-repeat,no-repeat}
+
+/* E. GRAVE (financing and listing): its own darker stock, a plain 28px hairline ledger, no glow, no chroma lift */
+.sec-grave{background-color:var(--deep-2);
+  background-image:
+    repeating-linear-gradient(to bottom,oklch(0.98 0.01 252.2 / .05) 0 1px,transparent 1px 28px),
+    var(--trim-neg),var(--trim-neg);
+  background-size:100% 100%,1px 100%,1px 100%;
+  background-position:0 0,11px 0,calc(100% - 11px) 0;
+  background-repeat:no-repeat,no-repeat,no-repeat}
+
+/* F. SPLIT BAND (story): the left 46% is a tint half, with white blind arcs on it, over paper; one block on phones */
+.sec-white.split{
+  background-image:
+    linear-gradient(90deg,var(--tint) 0 46%,transparent 46%),
+    radial-gradient(circle at 46% 100%,transparent 0 250px,var(--blind-k) 250px 252px,transparent 252px),
+    radial-gradient(circle at 100% 0,transparent 0 268px,oklch(0.40 0.104 246.5 / .13) 268px 269px,transparent 269px),
+    var(--trim-ink),var(--trim-ink);
+  background-size:100% 100%,100% 100%,100% 100%,1px 100%,1px 100%;
+  background-position:0 0,0 0,0 0,11px 0,calc(100% - 11px) 0;
+  background-repeat:no-repeat,no-repeat,no-repeat,no-repeat,no-repeat}
+@media (max-width:900px){
+  .sec-white.split{background-image:
+    linear-gradient(to bottom,var(--tint) 0,var(--paper) 220px),
+    var(--trim-ink),var(--trim-ink);
+    background-size:100% 100%,1px 100%,1px 100%;
+    background-position:0 0,11px 0,calc(100% - 11px) 0;
+    background-repeat:no-repeat,no-repeat,no-repeat}
+  #hero.sec-drench{background-image:
+    radial-gradient(60% 40% at 50% 78%,oklch(0.74 0.11 198 / .45) 0,transparent 70%),
+    linear-gradient(170deg,oklch(0.35 0.1 250) 0,oklch(0.44 0.12 246.5) 55%,oklch(0.56 0.12 225) 100%),
+    var(--trim-neg),var(--trim-neg);
+    background-size:100% 100%,100% 100%,1px 100%,1px 100%;
+    background-position:0 0,0 0,11px 0,calc(100% - 11px) 0;
+    background-repeat:no-repeat,no-repeat,no-repeat,no-repeat}
+}
+.table-scroll{background:var(--card)}
+@media print{
+  #hero.sec-drench,.sec-white,.sec-tint,.sec-dark,.sec-grave,.sec-white.split{background-image:none;background-color:Canvas;color:CanvasText}
+  .sec-dark h1,.sec-dark h2,.sec-dark h3,.sec-dark p,.sec-dark li,.sec-dark time,.sec-dark div,.hero h1,.hero .lead,.pillar h3,.pillar p{color:CanvasText}
+}
+@media (forced-colors:active){.sec-white,.sec-tint,.sec-dark,.sec-grave,#hero.sec-drench{background-image:none}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="concept-note">Independent design concept. Not affiliated with Harvard Bioscience, Inc. Official investor relations: <a href="https://investor.harvardbioscience.com/" target="_blank" rel="noopener">investor.harvardbioscience.com</a></div>
+
+<header class="site-nav">
+  <div class="wrap nav-inner">
+    <a class="nav-brand" href="#hero"><span class="nav-logo"><img src="img/logo.svg" alt="Harvard Bioscience" width="96" height="44"></span><span class="nav-tick">Nasdaq: HBIO</span></a>
+    <nav aria-label="Primary">
+      <button class="nav-burger" id="nav-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#story">Story</a></li>
+        <li><a href="#plan">Plan</a></li>
+        <li><a href="#instruments">Instruments</a></li>
+        <li><a href="#financials">Financials</a></li>
+        <li><a href="#financing">Financing</a></li>
+        <li><a href="#filings">Filings</a></li>
+        <li><a class="btn btn-primary" href="#contact">Contact IR <span class="arw" aria-hidden="true">-&gt;</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<!-- ============ 00 HERO (split: blue field | the photograph inside the logo's own crescent). Identity first; the read-first notice is always visible ============ -->
+<section id="hero" class="hero sec-dark sec-drench" aria-labelledby="hero-h">
+  <div class="wrap hero-wrap">
+    <div class="hero-copy">
+      <p class="eyebrow reveal">Harvard Bioscience, Inc. &middot; Nasdaq: HBIO</p>
+      <h1 id="hero-h" class="reveal" style="--d:.05s">Instruments for life science research, <span>since 1901.</span></h1>
+      <p class="lead reveal" style="--d:.1s">Harvard Bioscience describes itself as &ldquo;a leading developer, manufacturer and seller of technologies, products and services that enable fundamental advances in life science applications&rdquo;. It sells to academic and government laboratories, to pharmaceutical and biotechnology companies and to contract research organizations, from operations in the United States, Europe and China. <span class="tg tg-f">Filed</span> <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001548/hbio20251231_10k.htm" target="_blank" rel="noopener">10-K</a></p>
+      <div class="notice" role="note">
+        <h2>Read first: the loss, the financing and the listing</h2>
+        <ol>
+          <li>The net loss for 2025 was $56.7M. $48.0M of it is a goodwill impairment recorded in the first quarter of 2025. <span class="tg tg-f">Filed</span> <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001548/hbio20251231_10k.htm" target="_blank" rel="noopener">10-K</a></li>
+          <li>The 10-K says the maturity of the old credit agreement and covenant uncertainty &ldquo;raised substantial doubt about the Company&rsquo;s ability to continue as a going concern,&rdquo; and that, after the December 17, 2025 refinancing, management concluded the conditions had been alleviated and that substantial doubt did not exist when the 10-K was issued. <span class="tg tg-f">Filed</span> <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001548/hbio20251231_10k.htm" target="_blank" rel="noopener">10-K</a></li>
+          <li>Nasdaq notified the company on April 4, 2025 that its stock had fallen below the $1.00 minimum bid price. A 1-for-10 reverse stock split took effect on March 13, 2026, and the 10-K says the company cannot guarantee future compliance. <span class="tg tg-f">Filed</span> <a class="inl" href="#financing">Read the details</a></li>
+          <li>The $40.0M of term loans carries interest of at least 12.80%, and the 10-Q gives an effective rate of 17.9% for the second quarter of 2026. The $7.5M Term C loan converts at $10.00 a share: about 750,000 shares, or 16.5% of the shares outstanding, before any interest paid in kind. <span class="tg tg-f">Filed</span> <span class="tg tg-cm">Computed</span> <a class="inl" href="#financing">Read the terms</a></li>
+        </ol>
+      </div>
+      <div class="hero-cta reveal" style="--d:.2s">
+        <a class="btn btn-primary-light" href="#financing">Read the disclosures <span class="arw" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn-ghost-light" href="https://investor.harvardbioscience.com/" target="_blank" rel="noopener">Official investor site <span class="arw" aria-hidden="true">&nearr;</span></a>
+        <button class="btn btn-ghost-light hero-pause" type="button" data-motif-toggle aria-pressed="false">Pause motion</button>
+      </div>
+    </div>
+    <div class="hero-art reveal" style="--d:.1s">
+      <div class="hero-photo"><img src="img/cleanroom.webp" width="1600" height="827" alt="Two people in white protective suits work along an automated production line in a bright cleanroom"></div>
+      <svg id="hero-motif" class="hero-svg" viewBox="0 0 600 600" role="img" aria-labelledby="hm-t hm-d" focusable="false">
+        <title id="hm-t">The company&rsquo;s crescent mark, enlarged around a photograph</title>
+        <desc id="hm-d">The crescent arc from the Harvard Bioscience logo drawn large around a circular photograph, with a small dot that travels slowly around a dashed ring. Decorative.</desc>
+        <circle class="motif-ring" cx="300" cy="300" r="247" fill="none" stroke-width="1.6" stroke-dasharray="2 10" stroke-linecap="round"/>
+        <path class="motif-crescent" transform="translate(31.2 16.5) scale(2.1)" d="M67.5 65.9c42.7-42.7 112.3-43.3 160.2-3-2.4-2.9-4.9-5.7-7.6-8.4C172.2 6.7 96.7 4.6 51.5 49.9 6.2 95.2 8.3 170.6 56.1 218.5c2.7 2.7 5.5 5.2 8.4 7.6-40.3-47.9-39.7-117.5 3-160.2"/>
+        <g class="motif-orbit"><circle class="motif-dot" cx="300" cy="53" r="7.5"/></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 SNAPSHOT (light tint): five sourced figures, each with its period and filing ============ -->
+<section id="snapshot" class="snapshot sec-tint" aria-label="Key figures">
+  <div class="wrap">
+    <div class="stats-band">
+      <div class="stat reveal" style="--d:.04s">
+        <span class="stat-num">$86.6M</span>
+        <span class="stat-label">Revenue, year ended Dec 31, 2025</span>
+        <span class="stat-src">10-K &middot; filed</span>
+      </div>
+      <div class="stat reveal" style="--d:.08s">
+        <span class="stat-num">55<em>%</em></span>
+        <span class="stat-label">Recurring revenue, share of total revenues at Dec 31, 2025</span>
+        <span class="stat-src">10-K, company measure &middot; 2026 slides say 54%</span>
+      </div>
+      <div class="stat reveal" style="--d:.12s">
+        <span class="stat-num">+11.1<em>%</em></span>
+        <span class="stat-label">Revenue, second quarter of 2026 against 2025, to $22.7M</span>
+        <span class="stat-src">10-Q &middot; filed</span>
+      </div>
+      <div class="stat reveal" style="--d:.16s">
+        <span class="stat-num">$6.5M</span>
+        <span class="stat-label">Cash and cash equivalents, Jun 30, 2026</span>
+        <span class="stat-src">10-Q &middot; filed</span>
+      </div>
+      <div class="stat reveal" style="--d:.2s">
+        <span class="stat-num">4,552,305</span>
+        <span class="stat-label">Shares outstanding, Aug 4, 2026, after the 1-for-10 reverse split</span>
+        <span class="stat-src">10-Q cover &middot; filed</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 STORY (white, split: plate | text). Overview + problem framing + markets ============ -->
+<section id="story" class="sec-white split" aria-labelledby="story-h">
+  <div class="wrap split-wrap">
+    <figure class="split-fig reveal">
+      <img src="img/mesh-mea.webp" width="1600" height="1200" alt="A square circuit-board plate with a ring of gold electrode pads around a clear round well">
+      <figcaption>MeshMEA, a recording plate for organoids and tissue, as shown on harvardbioscience.com. <span class="tg tg-site">Company site</span></figcaption>
+    </figure>
+    <div class="split-copy">
+      <span class="eyebrow">Story</span>
+      <h2 id="story-h" class="reveal">From the syringe pump to the organoid plate.</h2>
+      <p class="reveal">The business began in 1901 as Harvard Apparatus, founded by Dr. William T. Porter, a professor of physiology at Harvard Medical School. Its early inventions included ventilators, the mechanical syringe pump for drug infusion in the 1950s and the microprocessor-controlled syringe pump in the 1980s. <span class="tg tg-f">Filed</span> <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001548/hbio20251231_10k.htm" target="_blank" rel="noopener">10-K</a></p>
+      <p class="reveal">Its products and services are sold &ldquo;to customers ranging from renowned academic institutions and government laboratories to the world&rsquo;s leading pharmaceutical, biotechnology and contract research organizations (&lsquo;CROs&rsquo;),&rdquo; and through &ldquo;a combination of direct and distribution channels&rdquo; to customers around the world. <span class="tg tg-f">Filed</span> <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001548/hbio20251231_10k.htm" target="_blank" rel="noopener">10-K</a></p>
+      <blockquote class="pull reveal">
+        <p>&ldquo;As the life sciences industry accelerates toward New Approach Methodologies (&ldquo;NAMs&rdquo;), Harvard Bioscience expects to evolve from a traditional tools provider into a leading enabler of Translational Medicine &ndash; positioned to bridge the gap between laboratory research and human clinical success.&rdquo;</p>
+        <p class="pull-src"><span class="tg tg-cs">Company statement</span> <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001548/hbio20251231_10k.htm" target="_blank" rel="noopener">10-K, Item 1</a></p>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 PLAN (dark navy): the company's four pillars, 01 to 04, with Project Viking inside the fourth ============ -->
+<section id="plan" class="sec-dark plan" aria-labelledby="plan-h">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Plan</span><h2 id="plan-h" class="reveal">The 10-K sets out four pillars.</h2>
+      <p class="lead reveal">These are the company&rsquo;s own words about what it plans to do. They are intentions, not results. <span class="tg tg-cs">Company statement</span></p></div>
+    <ol class="pillars">
+      <li class="pillar reveal" style="--d:.04s"><span class="pn">01</span><h3>Leading the Translational Bridge</h3>
+        <p>The company plans to lead by &ldquo;bridging in vivo and in vitro research&rdquo; and to help the industry move into &ldquo;the organoid and 3D biology markets,&rdquo; offering customers &ldquo;an integrated solution across critical stages of discovery and development.&rdquo;</p></li>
+      <li class="pillar reveal" style="--d:.08s"><span class="pn">02</span><h3>New Product Introduction pipeline</h3>
+        <p>Platforms such as SoHo&trade; telemetry, and the proprietary MeshMEA and Incub8 platforms, &ldquo;both of which are designed for organoid and tissue recording.&rdquo;</p></li>
+      <li class="pillar reveal" style="--d:.12s"><span class="pn">03</span><h3>Consumables Revenue Expansion</h3>
+        <p>It aims at &ldquo;shifting mix toward higher-margin consumables and software,&rdquo; starting from what it calls recurring revenue, 55% of total revenues at December 31, 2025. The 10-K does not define the measure, and the company&rsquo;s 2026 investor presentations give 54% for 2025.</p></li>
+      <li class="pillar reveal" style="--d:.16s"><span class="pn">04</span><h3>Operational Excellence and Disciplined Growth</h3>
+        <p>Using the preclinical business &ldquo;as a cash-generating foundation&rdquo; for research and development and bolt-on acquisitions. Project Viking, approved January 23, 2026, is to close the Holliston, Massachusetts manufacturing facility and move U.S. production to Minneapolis, with some operations moving to Germany, Sweden and the UK. Holliston stays open through 2026, and the 8-K expects the consolidation to be completed by the first quarter of 2027. The company expects about $3 million of savings in 2027 and about $4 million a year from 2028; the 10-Q estimates restructuring charges of about $3.6 to $4.5 million, including $0.6 to $0.7 million of non-cash charges, subject to change. <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326000516/f8k_012326.htm" target="_blank" rel="noopener">8-K, Jan 29, 2026</a></p></li>
+    </ol>
+    <p class="plan-note"><a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001548/hbio20251231_10k.htm" target="_blank" rel="noopener">10-K, Item 1</a> &middot; the savings figures are the company&rsquo;s expectations in its January 29, 2026 8-K</p>
+  </div>
+</section>
+
+<!-- ============ 04 INSTRUMENTS (tint): platform, how it is used, markets. Product names as the company's site lists them ============ -->
+<section id="instruments" class="sec-tint instruments" aria-labelledby="instr-h">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Instruments</span><h2 id="instr-h" class="reveal">What it sells.</h2>
+      <p class="lead reveal">Four of the products the company shows on its own site, from recording plates for organoids to a benchtop spectrophotometer. The site&rsquo;s home page was read on October 19, 2026; no performance figures are repeated here. <span class="tg tg-site">Company site</span></p></div>
+    <div class="prod-grid">
+      <figure class="prod reveal" style="--d:.04s"><div class="prod-img"><img src="img/incub8.webp" width="1600" height="1200" alt="A hand slides a clear 24-well plate into a black recording station labelled Incub8" loading="lazy"></div>
+        <figcaption><b>Incub8&trade;</b><span>Proprietary platform for organoid and tissue recording, named in the 10-K plan.</span></figcaption></figure>
+      <figure class="prod reveal" style="--d:.08s"><div class="prod-img"><img src="img/ali-mea.webp" width="1600" height="1200" alt="A green circuit board marked multichannel systems with a clear well at its centre" loading="lazy"></div>
+        <figcaption><b>ALI MEA&trade;</b><span>Listed among featured products; the site&rsquo;s image title describes air-liquid interface organoid electrophysiology.</span></figcaption></figure>
+      <figure class="prod reveal" style="--d:.12s"><div class="prod-img"><img src="img/biochrom-7500.webp" width="1600" height="1200" alt="A white and black benchtop spectrophotometer with its lid open" loading="lazy"></div>
+        <figcaption><b>Biochrom spectrophotometers</b><span>UV/Visible and microvolume instruments, listed under Biochrom on the site.</span></figcaption></figure>
+      <figure class="prod reveal" style="--d:.16s"><div class="prod-img"><img src="img/epc-10.webp" width="1600" height="1200" alt="A rack-mounted HEKA amplifier with a row of blue-ringed connectors" loading="lazy"></div>
+        <figcaption><b>EPC 10 USB 3.0 patch clamp amplifier</b><span>A HEKA instrument for electrophysiology, listed as a featured product.</span></figcaption></figure>
+    </div>
+    <p class="brands reveal"><span class="brands-k">Brands on the site</span> Biochrom &middot; BTX &middot; DSI &middot; Multi Channel Systems &middot; HEKA &middot; Harvard Apparatus &middot; Panlab &middot; Warner Instruments &middot; CMA &middot; Hugo Sachs Elektronik &middot; KD Scientific. <span class="tg tg-site">Company site</span></p>
+  </div>
+</section>
+
+<!-- ============ 05 FINANCIALS (white, split: the figure | the tables). The impairment is shown INSIDE the loss ============ -->
+<section id="financials" class="sec-white fin" aria-labelledby="fin-h">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Financials</span><h2 id="fin-h" class="reveal">What is inside the 2025 loss.</h2>
+      <p class="lead reveal">Revenue was $86.6M in 2025 against $94.1M in 2024. The net loss was $56.7M, of which $48.0M is the first-quarter goodwill impairment. Operations produced $6.7M of cash in 2025; the 10-K puts cash flow adjusted for non-cash items at $1.1M and credits the increase mainly to lower inventory and higher payables. In the first half of 2026 operations used $0.3M. <span class="tg tg-f">Filed</span> <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001548/hbio20251231_10k.htm" target="_blank" rel="noopener">10-K</a> <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326005425/hbio20260630_10q.htm" target="_blank" rel="noopener">10-Q</a></p></div>
+
+    <div class="fin-grid">
+      <div class="fin-col">
+        <h3 class="fin-h">From gross profit to net loss, 2025</h3>
+        <ol class="bridge" aria-label="From gross profit to net loss, year ended December 31, 2025">
+          <li style="--w:87%"><span class="b-l">Gross profit</span><span class="b-bar"><i></i></span><span class="b-v">$49.9M</span><span class="tg tg-f">Filed</span></li>
+          <li class="neg" style="--w:88.1%"><span class="b-l">Operating costs before the impairment</span><span class="b-bar"><i></i></span><span class="b-v">($50.5M)</span><span class="tg tg-cm">Computed</span></li>
+          <li class="neg key" style="--w:83.6%"><span class="b-l">Goodwill impairment, first quarter</span><span class="b-bar"><i></i></span><span class="b-v">($48.0M)</span><span class="tg tg-f">Filed</span></li>
+          <li class="tot neg" style="--w:84.7%"><span class="b-l">Operating loss</span><span class="b-bar"><i></i></span><span class="b-v">($48.6M)</span><span class="tg tg-f">Filed</span></li>
+          <li class="neg" style="--w:15.3%"><span class="b-l">Total other expense</span><span class="b-bar"><i></i></span><span class="b-v">($8.8M)</span><span class="tg tg-f">Filed</span></li>
+          <li class="tot neg" style="--w:100%"><span class="b-l">Loss before income taxes</span><span class="b-bar"><i></i></span><span class="b-v">($57.4M)</span><span class="tg tg-f">Filed</span></li>
+          <li style="--w:1.2%"><span class="b-l">Income tax benefit</span><span class="b-bar"><i></i></span><span class="b-v">$0.7M</span><span class="tg tg-f">Filed</span></li>
+          <li class="tot neg" style="--w:98.8%"><span class="b-l">Net loss</span><span class="b-bar"><i></i></span><span class="b-v">($56.7M)</span><span class="tg tg-f">Filed</span></li>
+        </ol>
+        <p class="tnote">Operating costs before the impairment are computed on this page: gross profit plus the operating loss, less the impairment ($49.9M + $48.6M &minus; $48.0M). Total other expense is filed: interest expense $4.9M, a loss on a pension settlement $1.2M and other expense, net $2.7M, which the 10-K says includes $1.8M of costs of exploring alternative sources of capital. Without the impairment the operating loss would have been about $0.6M. Bar lengths are drawn to the figures, longest = the loss before income taxes.</p>
+      </div>
+
+      <div class="fin-col">
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Revenue and net loss by year"><table class="fin wrapt">
+          <caption>Revenue and net loss, fiscal years ended December 31 (US dollars, as filed)</caption>
+          <thead><tr><th scope="col">Year ended</th><th scope="col" class="num">Revenue</th><th scope="col" class="num">Net loss</th><th scope="col">Filing</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Dec 31, 2025</th><td class="num">$86,550,000</td><td class="num">($56,700,000)</td><td><a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001548/0001171843-26-001548-index.htm" target="_blank" rel="noopener">10-K</a></td></tr>
+            <tr><th scope="row">Dec 31, 2024</th><td class="num">$94,135,000</td><td class="num">($12,405,000)</td><td><a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001548/0001171843-26-001548-index.htm" target="_blank" rel="noopener">10-K</a></td></tr>
+            <tr><th scope="row">Dec 31, 2023</th><td class="num">$112,250,000</td><td class="num">($3,415,000)</td><td><a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184325001472/0001171843-25-001472-index.htm" target="_blank" rel="noopener">10-K</a></td></tr>
+            <tr><th scope="row">Dec 31, 2022</th><td class="num">$113,335,000</td><td class="num">($9,516,000)</td><td><a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184324001239/0001171843-24-001239-index.htm" target="_blank" rel="noopener">10-K</a></td></tr>
+            <tr><th scope="row">Dec 31, 2021</th><td class="num">$118,904,000</td><td class="num">($288,000)</td><td><a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184323001566/0001171843-23-001566-index.htm" target="_blank" rel="noopener">10-K</a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="tnote">Each row comes from the latest 10-K that presents it: the 2025 10-K for 2025 and 2024, and the following year&rsquo;s 10-K for 2023, 2022 and 2021. All five rows use the same XBRL revenue tag; the company&rsquo;s longer series, not shown here, crosses a tag change. <span class="tg tg-f">Filed</span></p>
+
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Second quarter and first half of 2026 against 2025"><table class="fin">
+          <caption>Second quarter and first half, 2026 against 2025 (US dollars, unaudited, from the 10-Q)</caption>
+          <thead><tr><th scope="col">Measure</th><th scope="col" class="num">Q2 2026</th><th scope="col" class="num">Q2 2025</th><th scope="col" class="num">H1 2026</th><th scope="col" class="num">H1 2025</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Revenue</th><td class="num">$22,727,000</td><td class="num">$20,450,000</td><td class="num">$43,482,000</td><td class="num">$42,224,000</td></tr>
+            <tr><th scope="row">Gross profit</th><td class="num">$12,630,000</td><td class="num">$11,533,000</td><td class="num">$24,874,000</td><td class="num">$23,717,000</td></tr>
+            <tr><th scope="row">Operating loss</th><td class="num">($978,000)</td><td class="num">($819,000)</td><td class="num">($2,152,000)</td><td class="num">($50,487,000)</td></tr>
+            <tr><th scope="row">Net loss</th><td class="num">($2,910,000)</td><td class="num">($2,282,000)</td><td class="num">($6,334,000)</td><td class="num">($52,622,000)</td></tr>
+          </tbody>
+        </table></div>
+        <p class="tnote">The first-half 2025 loss includes the $48.0M goodwill impairment recorded in the first quarter of 2025, which is why it is so much larger than the first-half 2026 loss. Revenue rose $22.7M against $20.5M in the second quarter, or 11.1%. <span class="tg tg-f">Filed</span> <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326005425/0001171843-26-005425-index.htm" target="_blank" rel="noopener">10-Q</a></p>
+        <p class="tnote">The 10-Q also says: &ldquo;Our business has also been negatively affected by the imposition of increased tariffs on shipments of products between the United States and other countries, and in particular between the United States and China.&rdquo; Other current liabilities include $6.8M of employee retention tax credit refunds the company has received; the 10-Q says its compliance &ldquo;may be subject to audit until May 2029.&rdquo; In January 2026 a third party alleged a potential claim for breach of contract; the company does not concede it and estimates a possible loss of $0.1M to $0.8M. <span class="tg tg-f">Filed</span> <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326005425/hbio20260630_10q.htm" target="_blank" rel="noopener">10-Q</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 FINANCING AND LISTING (gravest band): going-concern history, the loan, the covenants, the Nasdaq timeline, in the filings' words ============ -->
+<section id="financing" class="sec-dark sec-grave financing" aria-labelledby="fing-h">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Financing and listing</span><h2 id="fing-h" class="reveal">What the filings say about the debt and the listing.</h2>
+      <p class="lead reveal">Set out in the filings&rsquo; words, with the dates. Nothing here is softened and nothing is added.</p></div>
+    <div class="fing-grid">
+      <div class="fing-col reveal">
+        <h3>Going-concern history</h3>
+        <p>The 10-K says the anticipated maturity of the old credit agreement on December 22, 2025, with uncertainty about future covenants, &ldquo;raised substantial doubt about the Company&rsquo;s ability to continue as a going concern.&rdquo; After the December 17, 2025 refinancing, management &ldquo;concluded that (1) the conditions and events that initially raised substantial doubt have been alleviated and (2) substantial doubt does not exist as of the issuance date.&rdquo; <span class="tg tg-f">Filed</span> <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001548/hbio20251231_10k.htm" target="_blank" rel="noopener">10-K</a></p>
+        <h3>The December 17, 2025 loan agreement</h3>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Term loans under the 2025 loan agreement"><table class="fin wrapt">
+          <caption>Term loans, principal at December 17, 2025 (US dollars)</caption>
+          <thead><tr><th scope="col">Loan</th><th scope="col" class="num">Principal</th><th scope="col">Terms</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Term A</th><td class="num">$10,000,000</td><td>Senior secured; matures Dec 17, 2029 per the 8-K, Dec 31, 2029 per the 10-K and 10-Q</td></tr>
+            <tr><th scope="row">Term B</th><td class="num">$22,500,000</td><td>Senior secured; matures Dec 17, 2029 per the 8-K, Dec 31, 2029 per the 10-K and 10-Q</td></tr>
+            <tr><th scope="row">Term C</th><td class="num">$7,500,000</td><td>Senior secured convertible; $10.00 a share after the reverse split ($1.00 before it), automatic above $15.00 for thirty trading days</td></tr>
+            <tr class="tot"><th scope="row">Total</th><td class="num">$40,000,000</td><td>&nbsp;</td></tr>
+          </tbody>
+        </table></div>
+        <p class="tnote">Interest is the greater of 12.80% (then 12.50% after the second anniversary) and the prime rate plus 5.25%, paid monthly in cash; the company may pay interest on Term C in kind. Quarterly principal payments on Terms A and B start December 31, 2027. A 10.00% exit fee is payable on term loan amounts that are prepaid or repaid, including at maturity, except Term C amounts that convert into common stock. Prepayment premiums are 3.00% in the first year, 2.00% in the second and 1.00% in the third, and none after that; no premium is due on Term A prepaid before March 31, 2027. Term C may not be prepaid before maturity except on full repayment of all term loans or a change of control. Maturity and the start of amortisation may be extended by one year if the company meets an adjusted EBITDA milestone. <span class="tg tg-f">Filed</span> <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184325007972/f8k_121625.htm" target="_blank" rel="noopener">8-K, Dec 17, 2025</a></p>
+        <p class="tnote">The 10-Q gives an effective interest rate of 17.9% for the second quarter of 2026. After the reverse split Term C converts at $10.00 a share, at the lenders&rsquo; option or automatically if the stock exceeds $15.00 for thirty consecutive trading days: about 750,000 shares, or 16.5% of the 4,552,305 shares outstanding, before any interest paid in kind <span class="tg tg-cm">Computed</span>. The lenders also hold detachable warrants for 200,000 shares at $5.00 a share, exercisable for seven years from December 17, 2025; 30,000 were exercised in the first quarter of 2026. <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326005425/hbio20260630_10q.htm" target="_blank" rel="noopener">10-Q</a> <span class="tg tg-f">Filed</span> <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184325007972/f8k_121625.htm" target="_blank" rel="noopener">8-K, Dec 17, 2025</a></p>
+        <h3>Covenants</h3>
+        <p>The loan agreement has a minimum liquidity covenant that applies at all times and a minimum adjusted EBITDA covenant tested at the end of each quarter. The 10-Q for the quarter ended June 30, 2026 says the company was in compliance with these covenants, including a $3.0 million minimum liquidity requirement and a minimum adjusted EBITDA of at least $6.0 million on a trailing 12-month basis. <span class="tg tg-f">Filed</span> <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326005425/hbio20260630_10q.htm" target="_blank" rel="noopener">10-Q</a></p>
+      </div>
+      <div class="fing-col reveal" style="--d:.08s">
+        <h3>The Nasdaq minimum bid price, in order</h3>
+        <ol class="trail">
+          <li><time datetime="2025-04-04">Apr 4, 2025</time><div>Nasdaq&rsquo;s notification letter: the bid price had been below $1.00 for 30 consecutive business days, February 21 to April 3, 2025.</div></li>
+          <li><time datetime="2025-10-03">Oct 3, 2025</time><div>The stock moved from the Nasdaq Global Market to the Nasdaq Capital Market, with a further 180 days, to March 30, 2026, to regain compliance.</div></li>
+          <li><time datetime="2026-03-06">Mar 6, 2026</time><div>Stockholders approved a reverse stock split at a special meeting.</div></li>
+          <li><time datetime="2026-03-13">Mar 13, 2026</time><div>A 1-for-10 reverse split took effect. The 10-K, filed the same day, says &ldquo;We cannot provide any guarantee that we will be able to regain or maintain compliance with Nasdaq&rsquo;s listing requirements in the future.&rdquo;</div></li>
+          <li class="open"><time datetime="2026-03-16">Mar 16, 2026</time><div>The 10-Q reports that the stock began trading on a split-adjusted basis on the Nasdaq Capital Market, still as HBIO.</div></li>
+        </ol>
+        <p class="tnote"><span class="tg tg-f">Filed</span> <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001548/hbio20251231_10k.htm" target="_blank" rel="noopener">10-K</a> <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326005425/hbio20260630_10q.htm" target="_blank" rel="noopener">10-Q</a> <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001384/f8k_030526.htm" target="_blank" rel="noopener">8-K, Mar 6, 2026</a></p>
+        <h3>Debt on the balance sheet</h3>
+        <p>Principal borrowed was $40.0M at December 31, 2025, against $37.4M a year earlier, and was still $40.0M at June 30, 2026: Term A $10.0M, Term B $22.5M and Term C $7.5M. Net of discounts, issuance costs and exit-fee accretion, long-term debt was carried at $35.9M at December 31, 2025 and $36.7M at June 30, 2026. Cash was $8.6M, then $6.5M. <span class="tg tg-f">Filed</span> <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001548/hbio20251231_10k.htm" target="_blank" rel="noopener">10-K</a> <a class="src" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326005425/hbio20260630_10q.htm" target="_blank" rel="noopener">10-Q</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 FILINGS AND ALERTS (tint): the filing record, newest first, and the official alerts service ============ -->
+<section id="filings" class="sec-tint filings" aria-labelledby="fil-h">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Filings</span><h2 id="fil-h" class="reveal">The record since November 2025.</h2>
+      <p class="lead reveal">Each line links to the filing on EDGAR. The list holds every annual and quarterly report, proxy statement and Form 8-K in the period, named by form and main items (the exhibit-only Item 9.01 is not repeated); insider-ownership and other forms are on EDGAR.</p></div>
+    <div class="news">
+      <section class="news-year"><h3 class="news-yr">2026</h3><ul class="news-list">
+        <li class="news-item"><time datetime="2026-08-11">Aug 11, 2026</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326005425/hbio20260630_10q.htm" target="_blank" rel="noopener">Quarterly report, quarter ended June 30, 2026<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">10-Q</span></li>
+        <li class="news-item"><time datetime="2026-08-11">Aug 11, 2026</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326005405/f8k_081126.htm" target="_blank" rel="noopener">Results for the quarter ended June 30, 2026, Item 2.02<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">8-K</span></li>
+        <li class="news-item"><time datetime="2026-08-11">Aug 11, 2026</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326005406/f8k_081126.htm" target="_blank" rel="noopener">Investor presentation, Item 7.01<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">8-K</span></li>
+        <li class="news-item"><time datetime="2026-06-02">Jun 2, 2026</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326003877/f8k_060226.htm" target="_blank" rel="noopener">Annual meeting results and the amended 2021 Incentive Plan, Items 5.02 and 5.07<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">8-K</span></li>
+        <li class="news-item"><time datetime="2026-05-12">May 12, 2026</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326003311/hbio20260331_10q.htm" target="_blank" rel="noopener">Quarterly report, quarter ended March 31, 2026<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">10-Q</span></li>
+        <li class="news-item"><time datetime="2026-05-12">May 12, 2026</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326003270/f8k_050826.htm" target="_blank" rel="noopener">Results for the quarter ended March 31, 2026, Item 2.02<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">8-K</span></li>
+        <li class="news-item"><time datetime="2026-05-12">May 12, 2026</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326003271/f8k_051226.htm" target="_blank" rel="noopener">Investor presentation, Item 7.01<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">8-K</span></li>
+        <li class="news-item"><time datetime="2026-04-21">Apr 21, 2026</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326002617/hbio20260420_def14a.htm" target="_blank" rel="noopener">Proxy statement for the 2026 annual meeting<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">DEF 14A</span></li>
+        <li class="news-item"><time datetime="2026-03-17">Mar 17, 2026</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001614/f8k_031726.htm" target="_blank" rel="noopener">Investor presentation, Item 7.01<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">8-K</span></li>
+        <li class="news-item"><time datetime="2026-03-13">Mar 13, 2026</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001548/hbio20251231_10k.htm" target="_blank" rel="noopener">Annual report, year ended December 31, 2025<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">10-K</span></li>
+        <li class="news-item"><time datetime="2026-03-12">Mar 12, 2026</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001504/f8k_031226.htm" target="_blank" rel="noopener">Results for the year ended December 31, 2025, Item 2.02<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">8-K</span></li>
+        <li class="news-item"><time datetime="2026-03-10">Mar 10, 2026</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001447/f8k_031026.htm" target="_blank" rel="noopener">Chief executive officer employment agreement and chief financial officer appointment, Item 5.02<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">8-K</span></li>
+        <li class="news-item"><time datetime="2026-03-06">Mar 6, 2026</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001384/f8k_030526.htm" target="_blank" rel="noopener">Special meeting results and the 1-for-10 ratio, Items 5.07, 7.01 and 8.01<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">8-K</span></li>
+        <li class="news-item"><time datetime="2026-02-10">Feb 10, 2026</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326000721/f8k_020926.htm" target="_blank" rel="noopener">Preliminary fourth-quarter 2025 results, Item 2.02<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">8-K</span></li>
+        <li class="news-item"><time datetime="2026-01-30">Jan 30, 2026</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326000541/def14a_013026.htm" target="_blank" rel="noopener">Proxy statement for the March 6, 2026 special meeting<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">DEF 14A</span></li>
+        <li class="news-item"><time datetime="2026-01-29">Jan 29, 2026</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326000516/f8k_012326.htm" target="_blank" rel="noopener">Project Viking, consolidation of manufacturing, Items 2.05 and 7.01<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">8-K</span></li>
+        <li class="news-item"><time datetime="2026-01-20">Jan 20, 2026</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326000343/f8k_012026.htm" target="_blank" rel="noopener">Bylaws amended to cut the stockholder quorum from a majority to one-third, Item 5.03<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">8-K</span></li>
+        <li class="news-item"><time datetime="2026-01-12">Jan 12, 2026</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326000203/f8k_010926.htm" target="_blank" rel="noopener">Investor update presentation, Item 7.01<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">8-K</span></li>
+      </ul></section>
+      <section class="news-year"><h3 class="news-yr">2025</h3><ul class="news-list">
+        <li class="news-item"><time datetime="2025-12-17">Dec 17, 2025</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184325007972/f8k_121625.htm" target="_blank" rel="noopener">Loan and Security Agreement with BroadOak, Items 1.01, 1.02, 2.03 and 5.02<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">8-K</span></li>
+        <li class="news-item"><time datetime="2025-12-05">Dec 5, 2025</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184325007776/f8k_120525.htm" target="_blank" rel="noopener">Update on the refinancing, Item 8.01<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">8-K</span></li>
+        <li class="news-item"><time datetime="2025-11-06">Nov 6, 2025</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184325007099/hbio20250930_10q.htm" target="_blank" rel="noopener">Quarterly report, quarter ended September 30, 2025<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">10-Q</span></li>
+        <li class="news-item"><time datetime="2025-11-06">Nov 6, 2025</time><a class="news-link" href="https://www.sec.gov/Archives/edgar/data/1123494/000117184325007071/f8k_110625.htm" target="_blank" rel="noopener">Results for the quarter ended September 30, 2025, Item 2.02<span class="arw" aria-hidden="true">&rarr;</span></a><span class="news-tag">8-K</span></li>
+      </ul></section>
+    </div>
+    <div class="alerts-row reveal">
+      <div><b>Investor alerts</b><p>Filings and releases by email come from the company&rsquo;s own alerts service. This page collects no email address.</p></div>
+      <a class="btn btn-primary" href="https://investor.harvardbioscience.com/email-alerts" target="_blank" rel="noopener">Official email alerts <span class="arw" aria-hidden="true">&nearr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 CONTACT IR (white) ============ -->
+<section id="contact" class="sec-white contact" aria-labelledby="con-h">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Investor relations</span><h2 id="con-h" class="reveal">Contact.</h2></div>
+    <div class="contact-grid">
+      <div class="contact-col reveal"><h3>Investor relations</h3>
+        <a href="https://investor.harvardbioscience.com/contact-us" target="_blank" rel="noopener">Contact the investor relations team</a>
+        <a href="https://investor.harvardbioscience.com/" target="_blank" rel="noopener">investor.harvardbioscience.com</a></div>
+      <div class="contact-col reveal" style="--d:.06s"><h3>Headquarters</h3>
+        <address>Holliston, Massachusetts</address></div>
+      <div class="contact-col reveal" style="--d:.12s"><h3>Filings</h3>
+        <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001123494&amp;type=&amp;dateb=&amp;owner=include&amp;count=40" target="_blank" rel="noopener">SEC EDGAR, CIK 0001123494</a></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+<div class="foot-brand"><img src="img/logo-light.svg" alt="Harvard Bioscience" width="96" height="44"></div>
+<ul class="footer-links">
+  <li><a href="https://investor.harvardbioscience.com/" target="_blank" rel="noopener">Official investor relations</a></li>
+  <li><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001123494&amp;type=&amp;dateb=&amp;owner=include&amp;count=40" target="_blank" rel="noopener">SEC EDGAR filings, CIK 0001123494</a></li>
+  <li><a href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326001548/hbio20251231_10k.htm" target="_blank" rel="noopener">Form 10-K, fiscal 2025</a></li>
+  <li><a href="https://www.sec.gov/Archives/edgar/data/1123494/000117184326005425/hbio20260630_10q.htm" target="_blank" rel="noopener">Form 10-Q, June 30, 2026</a></li>
+</ul>
+<p class="method">How this page was made: figures come from Harvard Bioscience&rsquo;s Form 10-K for the year ended December 31, 2025 (filed March 13, 2026), its Form 10-Q for the quarter ended June 30, 2026 (filed August 11, 2026) and its Forms 8-K from November 2025 to August 2026, and are labelled filed, company statement, computed or company site. Amounts are US dollars as filed. Product names and images come from harvardbioscience.com, read on October 19, 2026, and may since have changed. Nothing here is a forecast or an offer.</p>
+    <p class="fls"><b>About this page:</b> This is an independent design concept and is not the official Harvard Bioscience investor relations website. It is not affiliated with, endorsed by, or maintained by Harvard Bioscience, Inc. Figures were assembled from public materials at a point in time and may be outdated; verify every figure against the company's official SEC filings. For official information, visit <a href="https://investor.harvardbioscience.com/">investor.harvardbioscience.com</a>.</p>
+    <p class="fls"><b>Forward-Looking Statements:</b> This website contains forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995, including statements regarding its net losses, including the goodwill impairment recorded in 2025; its indebtedness under the December 2025 loan agreement and its ability to meet the minimum liquidity and adjusted EBITDA covenants; the dilution that conversion of the Term C Loan could cause; whether its common stock maintains compliance with Nasdaq listing requirements after the March 2026 reverse stock split; the cost and execution of Project Viking and its manufacturing consolidation; and its operations in the United States, Europe and China. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially from those expressed or implied. We undertake no obligation to update any forward-looking statements except as required by law. See the company's SEC filings, including its most recent 10-K and 10-Q, for a full discussion of risk factors.</p>
+    <p class="market-note">Market data, where shown, is delayed at least 15 minutes and provided for this concept only. Real-time quotes and official figures are available through the company's investor relations site and SEC filings. This concept page shows no live or delayed share quote. The only share figure it states is the 4,552,305 shares outstanding on the 10-Q cover, after the 1-for-10 reverse stock split of March 13, 2026. The shares trade on the Nasdaq Capital Market under the symbol HBIO.</p>
+  </div>
+</footer>
+
+<script>
+/* mediaconsole motion: inlined by scaffold.mjs at the end of body, identical on every page; never edit it.
+   Sets html.js, runs the ONE reveal observer (fires the mc:reveal hook), scroll-spy, hamburger aria, and the
+   #hero-motif .paused toggle (off-screen, hidden tab, [data-motif-toggle]). Null-guarded: a failure reveals everything. */
+(function(){
+  var d=document,root=d.documentElement;
+  root.classList.add('js');
+  var reduce=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var hasIO='IntersectionObserver' in window;
+  function fire(el,name,detail){
+    var ev;
+    try{ev=new CustomEvent(name,{bubbles:true,detail:detail})}
+    catch(x){ev=d.createEvent('CustomEvent');ev.initCustomEvent(name,true,false,detail)}
+    el.dispatchEvent(ev);
+  }
+  /* mc:reveal fires ONCE per .reveal element, bubbling, as .in lands; detail.reduced is true under reduced motion.
+     Components hook here (counters.js) instead of adding a second observer. */
+  function show(el){
+    if(el.classList.contains('in'))return;
+    el.classList.add('in');
+    fire(el,'mc:reveal',{reduced:reduce});
+  }
+  try{
+    var els=[].slice.call(d.querySelectorAll('.reveal'));
+    if(reduce||!hasIO){els.forEach(show)}
+    else{
+      var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);show(e.target)}})},{threshold:.12});
+      els.forEach(function(el){io.observe(el)});
+    }
+  }catch(err){root.classList.remove('js');[].forEach.call(d.querySelectorAll('.reveal'),function(el){el.classList.add('in')})}
+  try{
+    var burger=d.querySelector('.nav-burger'),links=d.getElementById('nav-links'),nav=d.querySelector('.site-nav');
+    if(burger&&links){
+      var setOpen=function(o){links.classList.toggle('open',o);burger.setAttribute('aria-expanded',o?'true':'false')};
+      burger.addEventListener('click',function(){setOpen(!links.classList.contains('open'))});
+      links.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'))setOpen(false)});
+      d.addEventListener('keydown',function(e){if((e.key==='Escape'||e.key==='Esc')&&links.classList.contains('open')){setOpen(false);burger.focus()}});
+    }
+    if(nav){var onScroll=function(){nav.classList.toggle('scrolled',window.scrollY>8)};window.addEventListener('scroll',onScroll,{passive:true});onScroll()}
+  }catch(err){}
+  try{
+    var na=[].slice.call(d.querySelectorAll('.nav-links a[href^="#"]:not(.btn)'));
+    if(na.length&&hasIO){
+      var so=new IntersectionObserver(function(en){en.forEach(function(e){
+        if(!e.isIntersecting)return;var id='#'+e.target.id;
+        na.forEach(function(a){var on=a.getAttribute('href')===id;a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')});
+      })},{rootMargin:'-40% 0px -55% 0px'});
+      na.forEach(function(a){var t=d.getElementById(a.getAttribute('href').slice(1));if(t)so.observe(t)});
+    }
+  }catch(err){}
+  /* hero motif pause: toggles .paused on #hero-motif (off-screen, hidden tab, or the user's [data-motif-toggle]).
+     The class is the whole contract: substrate CSS pauses every CSS animation inside it; JS motifs watch it (wave.js). */
+  try{
+    var motif=d.getElementById('hero-motif');
+    if(motif&&!reduce){
+      var hero=d.getElementById('hero')||motif,hv=true,user=false,tg=[].slice.call(d.querySelectorAll('[data-motif-toggle]'));
+      var sm=function(){var p=user||!hv||d.hidden;motif.classList.toggle('paused',p)};
+      if(hasIO)new IntersectionObserver(function(en){en.forEach(function(e){hv=e.isIntersecting});sm()},{threshold:0}).observe(hero);
+      d.addEventListener('visibilitychange',sm);
+      tg.forEach(function(b){
+        b.setAttribute('aria-pressed','false');
+        b.addEventListener('click',function(){user=!user;tg.forEach(function(t){t.setAttribute('aria-pressed',user?'true':'false')});sm()});
+      });
+    }
+  }catch(err){}
+})();
+</script>
+</body>
+</html>
